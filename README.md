@@ -18,3 +18,13 @@ Welcome to The Hunt app.This is a gaming app similiar to Treasure Hunt.
 - NoSQL
 - Heroku
 - PostgreSQL
+
+## Team Members:
+
+<table>
+  <tr>
+   <td align="center"><a href="https://github.com/nrajubn"><img src="https://avatars.githubusercontent.com/u/60019513?s=460&u=6601ccba9a28d0a3095067e657e7305603bd6dda&v=4" width="100px;" alt=""/><br /><sub><b>Raju Nooka</b></sub></a><br /></td>
+  
+  <td align="center"><a href="https://github.com/Avisakula123"><img src="https://avatars.githubusercontent.com/u/60164504?s=460&u=9401e8b6d44679177550d9b4b5c574cb9100c975&v=4" width="100px;" alt=""/><br /><sub><b>Rohith Reddy Avisakula</b></sub></a><br /></td>
+</tr>
+</table>
