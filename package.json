@@ -1,0 +1,19 @@
+{
+  "name": "full-stack-app",
+  "version": "1.0.0",
+  "description": "location based full-stack game application to find treasure.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nrajubn/Full-Stack-App.git"
+  },
+  "author": "rajubn",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nrajubn/Full-Stack-App/issues"
+  },
+  "homepage": "https://github.com/nrajubn/Full-Stack-App#readme"
+}

@@ -6,7 +6,8 @@ Welcome to The Hunt app.This is a gaming app similiar to Treasure Hunt.
 ![GitHub repo size](https://img.shields.io/github/repo-size/denisecase/web-app-2020-fall?style=flat)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
-## User stories
+
+
 - As a player, I want to touch/click the first color to request a valid (treasure) location.
 - As a player, I want to hear confirmation that a location has been selected (so I can I can begin searching). 
 - As a player, I want to touch/click the second color:  If I am outside the treasure location, I want to hear information to help me find the treasure location (clue? how far away? what direction to walk?)
