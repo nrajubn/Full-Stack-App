@@ -1,18 +1,21 @@
 # group5-Fullstack-app
 
-Welcome to The Hunt app.This is a gaming app similiar to Treasure Hunt.
+Welcome to 'The Hunt', a full-stack location-based game app.
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/dabde95955984dd08493709c421c7da6)](https://app.codacy.com/gh/denisecase/web-app-2020-fall?utm_source=github.com&utm_medium=referral&utm_content=denisecase/web-app-2020-fall&utm_campaign=Badge_Grade)
-![GitHub repo size](https://img.shields.io/github/repo-size/denisecase/web-app-2020-fall?style=flat)
-[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
+## Overview 
+- A location-based gaming application that assists the user in finding the treasure. 
+- It first compares the device's coordinates to the target position and informs the user whether he or she is inside or outside of it. 
+- When the user clicks/touches the first color, it displays a correct treasure location and also a confirmation message stating that a specific location has been chosen will appear.
+- Even after confirmation, the user is given the option to choose a different spot, and if so, the game can be restarted from the beginning.
+- Whether the user is inside the treasure location and selects or touches the second color, the user will hear information that a treasure has been won; if the user is outside the target location, the user will hear information about help in finding a treasure like direction to walk, how far away from it, or any other clue.
 
+## User stories 
 
-
--[ ] As a player, I want to touch/click the first color to request a valid (treasure) location.
--[ ] As a player, I want to hear confirmation that a location has been selected (so I can I can begin searching). 
--[ ] As a player, I want to touch/click the second color:  If I am outside the treasure location, I want to hear information to help me find the treasure location (clue? how far away? what direction to walk?)
--[ ] As a player, I want to touch/click the second color: If I am inside the treasure location, I want to hear and see confirmation that I have earned this treasure.
--[ ] As a player, after confirmation that I have earned a location: I want the game to ask me if I would like to select another location. If I select yes, we reset and begin again. 
+- [ ] As a player, I want to touch/click the first color to request a valid (treasure) location.
+- [ ] As a player, I want to hear confirmation that a location has been selected (so I can I can begin searching). 
+- [ ] As a player, I want to touch/click the second color:  If I am outside the treasure location, I want to hear information to help me find the treasure location (clue? how far away? what direction to walk?)
+- [ ] As a player, I want to touch/click the second color: If I am inside the treasure location, I want to hear and see confirmation that I have earned this treasure.
+- [ ] As a player, after confirmation that I have earned a location: I want the game to ask me if I would like to select another location. If I select yes, we reset and begin again. 
 
 ## Stack
 - Express Framework
