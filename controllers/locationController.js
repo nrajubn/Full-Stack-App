@@ -5,11 +5,11 @@
  *
  
  */
-// const { ValidationError } = require('sequelize');
-const LOG = require('../util/logger');
-const db = require('../models/index')();
+const { ValidationError } = require("sequelize");
+const LOG = require("../util/logger");
+const db = require("../models/index")();
 
-const tabTitle = 'Locations';
+const tabTitle = "Locations";
 
 // FUNCTIONS TO RESPOND WITH JSON DATA  ----------------------------------------
 
@@ -17,12 +17,12 @@ const tabTitle = 'Locations';
 module.exports.findAll = async (req, res) => {
   (await db).models.Location.findAll({
     attributes: {
-      exclude: ['createdAt', 'updatedAt'],
+      exclude: ["createdAt", "updatedAt"],
     },
     include: [
       {
         model: (await db).models.Location,
-        attributes: ['id', 'name'],
+        attributes: ["id", "name"],
       }
       
     ],
@@ -32,7 +32,7 @@ module.exports.findAll = async (req, res) => {
     })
     .catch((err) => {
       res.status(500).send({
-        message: err.message || 'Error retrieving all.',
+        message: err.message || "Error retrieving all.",
       });
     });
 };
@@ -58,14 +58,9 @@ module.exports.saveNew = async (req, res) => {
   try {
     const context = await db;
     await context.models.Location.create(req.body);
-    return res.redirect('/location');
+    return res.redirect("/location");
   } catch (err) {
-    // if (err instanceof ValidationError) {
-    //   const item = await prepareInvalidItem(err, req);
-    //   res.locals.location = item;
-    //   return res.render('location/create.ejs', { title: tabTitle, res });
-    // }
-    return res.redirect('/location');
+    return res.redirect("/location");
   }
 };
 
@@ -78,14 +73,9 @@ module.exports.saveEdit = async (req, res) => {
       where: { id: reqId },
     });
     LOG.info(`Updated: ${JSON.stringify(updated)}`);
-    return res.redirect('/location');
+    return res.redirect("/location");
   } catch (err) {
-    // if (err instanceof ValidationError) {
-    //   const item = await prepareInvalidItem(err, req);
-    //   res.locals.location = item;
-    //   return res.render('location/edit.ejs', { title: tabTitle, res });
-    // }
-    return res.redirect('/location');
+    return res.redirect("/location");
   }
 };
 
@@ -97,7 +87,7 @@ module.exports.deleteItem = async (req, res) => {
       where: { id: reqId },
     });
     if (deleted) {
-      return res.redirect('/location');
+      return res.redirect("/location");
     }
     throw new Error(`${reqId} not found`);
   } catch (err) {
@@ -112,11 +102,11 @@ module.exports.showIndex = async (req, res) => {
   (await db).models.Location.findAll()
     .then((data) => {
       res.locals.locations = data;
-      res.render('location/index.ejs', { title: tabTitle, res });
+      res.render("location/index.ejs", { title: tabTitle, res });
     })
     .catch((err) => {
       res.status(500).send({
-        message: err.message || 'Error retrieving all.',
+        message: err.message || "Error retrieving all.",
       });
     });
 };
@@ -127,10 +117,10 @@ module.exports.showCreate = async (req, res) => {
   // this also provides a place to pass any validation errors to the view
   // Important! attributes must match those defined in the model
   const tempItem = {
-    name: 'LocationName',
+    name: "LocationName",
   };
   res.locals.location = tempItem;
-  res.render('location/create.ejs', { title: tabTitle, res });
+  res.render("location/create.ejs", { title: tabTitle, res });
 };
 
 // GET /delete/:id
@@ -140,9 +130,9 @@ module.exports.showDelete = async (req, res) => {
     .then((data) => {
       res.locals.location = data;
       if (data) {
-        res.render('location/delete.ejs', { title: tabTitle, res });
+        res.render("location/delete.ejs", { title: tabTitle, res });
       } else {
-        res.redirect('location/');
+        res.redirect("location/");
       }
     })
     .catch((err) => {
@@ -158,7 +148,7 @@ module.exports.showDetails = async (req, res) => {
   (await db).models.Location.findByPk(id)
     .then((data) => {
       res.locals.location = data;
-      res.render('location/details.ejs', { title: tabTitle, res });
+      res.render("location/details.ejs", { title: tabTitle, res });
     })
     .catch((err) => {
       res.status(500).send({
@@ -173,7 +163,7 @@ module.exports.showEdit = async (req, res) => {
   (await db).models.Location.findByPk(id)
     .then((data) => {
       res.locals.location = data;
-      res.render('location/edit.ejs', { title: tabTitle, res });
+      res.render("location/edit.ejs", { title: tabTitle, res });
     })
     .catch((err) => {
       res.status(500).send({

@@ -14,7 +14,7 @@ module.exports = async (sequelize) => {
     const {
       
       Location,
-      // Clue,
+    
       
     } = await sequelize.models;
 
