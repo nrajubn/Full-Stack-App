@@ -24,7 +24,7 @@
           <thead>
             <tr>
               <th scope="col">ID</th>
-              <th scope="col">Name</th>
+              <th scope="col">Location</th>
               <th >Action</th>
             </tr>
           </thead>
@@ -35,8 +35,8 @@
               <td><%= locations[i].name%></td>
               <td>
                 <a class="btn btn-primary details" href="../location/details/<%=locations[i].id%>"><i
-                    class="fab fa-sistrix" title="test"></i></a>
-                <a class="btn btn-success edit" href="../location/edit/<%=locations[i].id%>"><i class="fas fa-user-edit"></i></a>
+                    class="fab fa-sistrix" title="details"></i></a>
+                <a class="btn btn-success edit" href="../location/edit/<%=locations[i].id%>"><i class="fas fa-user-edit"title="edit"></i></a>
                 <a class="btn btn-danger delete" href="../location/delete/<%=locations[i].id%>"><i
                     class="fas fa-trash-alt"></i></a>
               </td>
@@ -52,7 +52,7 @@
         <% } %>
     
         <br>
-        <h3>Mouse over icons to see where you will go.</h3>
+        <!-- <h3>Mouse over icons to see where you will go.</h3> -->
     
       </div>
     </div>
