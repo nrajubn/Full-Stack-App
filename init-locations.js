@@ -1,6 +1,6 @@
 export default [
     {
-        name: 'horizons apartments',
+        name: 'UPD',
         type: 'quad',
         coordinates: [
             {
@@ -26,6 +26,11 @@ export default [
         Name:'Colden Pond',
         Latitude:40.35007, 
         Longitude:-94.88305,
-    }
+    },
+{
+    Name: "B.D Owens Library",
+    Latitude: 40.35385,
+    Longitude: -94.88591,
+  },
 
 ];
