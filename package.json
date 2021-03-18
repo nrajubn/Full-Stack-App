@@ -1,7 +1,12 @@
 {
   "dependencies": {
+    "ejs": "^3.1.6",
     "express": "^4.17.1",
-    "sequelize": "^6.5.1"
+    "express-ejs-layouts": "^2.5.0",
+    "express-session": "^1.17.1",
+    "sequelize": "^6.5.1",
+    "sequelize-cli": "^6.2.0",
+    "winston": "^3.3.3"
   },
   "name": "full-stack-app",
   "description": "Welcome to 'The Hunt', a full-stack location-based game app.",
