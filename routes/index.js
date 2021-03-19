@@ -6,7 +6,7 @@ const locationRoutes = require("./location.routes");
 LOG.info("routes/index.js: STARTING custom routes......");
 const router = express.Router();
 
-const appTitle = "Full Stack App";
+const appTitle = "Full stack app";
 const appSubTitle = "Gaming app";
 
 /* GET home page. */
@@ -26,13 +26,6 @@ try {
 } catch (err) {
   LOG.error(`ERROR: ${err.message}`);
 }
-
-try {
-  router.use("/aboutp", locationRoutes);
-} catch (err) {
-  LOG.error(`ERROR: ${err.message}`);
-}
-
 LOG.info("routes/index.js: ENDING custom routes......");
 
 module.exports = router;
