@@ -64,8 +64,6 @@ module.exports.saveNew = async (req, res) => {
   }
 };
 
-
-
 // POST /save/:id
 module.exports.saveEdit = async (req, res) => {
   try {
@@ -97,6 +95,10 @@ module.exports.deleteItem = async (req, res) => {
   }
 };
 
+
+
+
+
 // RESPOND WITH VIEWS  --------------------------------------------
 
 // GET to this controller base URI (the default)
@@ -112,8 +114,6 @@ module.exports.showIndex = async (req, res) => {
       });
     });
 };
-
-
 
 // GET /create
 module.exports.showCreate = async (req, res) => {

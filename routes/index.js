@@ -17,6 +17,13 @@ router.get("/", (req, res) => {
   });
 });
 
+/* About */
+router.get("/raju", (req, res) => {
+  return res.render("raju.ejs",{
+    title: appTitle,
+  } );
+});
+
 router.get("/index", (req, res) => {
   return res.redirect("/");
 });
