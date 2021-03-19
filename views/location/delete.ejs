@@ -20,8 +20,8 @@
         <tbody>
     
           <tr>
-            <th scope="row"><%= location.id %></th>
-            <td><%= location.name%></td>
+            <th scope="row"><%= locationId %></th>
+            <td><%= locationName%></td>
             <td>
               <form action="/location/delete/<%=location.id%>" method="post">
                 <input type="submit" class="btn btn-danger delete" value="Delete" onclick="return alert('Are you sure?')"/>
