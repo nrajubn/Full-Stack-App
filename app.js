@@ -2,7 +2,7 @@
 const express = require('express');
 const expressLayouts = require('express-ejs-layouts');
 const path = require('path'); // builds path strings
-const favicon = require('serve-favicon');
+ const favicon = require('serve-favicon');
 const morgan = require('morgan'); // logging
 
 // dependencies - allow multiple view engines
@@ -14,9 +14,9 @@ const helmet = require('helmet'); // safer http headers
 const compression = require('compression'); // smaller=faster
 
 // dependencies - passport authentication
-const flash = require('connect-flash'); // used with passport
-const passport = require('passport');
-const session = require('express-session');
+// const flash = require('connect-flash'); // used with passport
+// const passport = require('passport');
+// const session = require('express-session');
 
 // bring in logger
 const LOG = require('./util/logger');
@@ -39,14 +39,14 @@ app.use(expressStatusMonitor());
 // app middleware - basic
 app.use(express.json());
 app.use(express.urlencoded({ extended: true })); // bodyParser not needed
-// app.use(express.static(path.join(__dirname, 'public')));
-// app.use(express.static('public'));
-// app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
+ app.use(express.static(path.join(__dirname, 'public')));
+ app.use(express.static('public'));
+ app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 app.use(expressLayouts);
 app.use(morgan('combined'));
 
 // app middleware - production
-// app.use(helmet()); // security, http headers
+ app.use(helmet()); // security, http headers
 app.use(compression()); // compress all routes
 
 // app middleware - expose passport req.user to views
@@ -62,7 +62,7 @@ const baseUrl = process.env.BASE_URL || '/';
 app.use(baseUrl, require('./routes/index'));
 
 // error handler from
-// https://github.com/mdn/express-locallibrary-tutorial/blob/master/app.js
+ https://github.com/mdn/express-locallibrary-tutorial/blob/master/app.js
 app.use((req, res, err) => {
   // set locals, only providing errors in development
   res.locals.error = req.app.get('env') === 'development' ? err : {};
