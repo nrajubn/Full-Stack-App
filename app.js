@@ -58,6 +58,8 @@ app.use((req, res, next) => {
 LOG.info('app middleware configured');
 
 // app middleware - configure routing
+const purl = process.env.BASE_URL || '/aboutrohith';
+app.use(purl,require('./routes/index'));
 const baseUrl = process.env.BASE_URL || '/';
 app.use(baseUrl, require('./routes/index'));
 
@@ -74,3 +76,7 @@ app.use((req, res, err) => {
 // export the express app (helpful for testing)
 // see bin/www.js for environment-specific startup
 module.exports = app;
+
+app.get('/aboutp', (req, res) => {ss
+  res.send(' Hello! This is rohith ')
+})

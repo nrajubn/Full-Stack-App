@@ -64,6 +64,14 @@ module.exports.saveNew = async (req, res) => {
   }
 };
 
+try {
+  const context = await db;
+  await context.models.Location.create(req.body);
+  return res.redirect("/aboutp");
+} catch (err) {
+  return res.redirect("/aboutp");
+};
+
 // POST /save/:id
 module.exports.saveEdit = async (req, res) => {
   try {
@@ -103,6 +111,19 @@ module.exports.showIndex = async (req, res) => {
     .then((data) => {
       res.locals.locations = data;
       res.render("location/index.ejs", { title: tabTitle, res });
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: err.message || "Error retrieving all.",
+      });
+    });
+};
+
+module.exports.showIndex = async (req, res) => {
+  (await db).models.Location.findAll()
+    .then((data) => {
+      res.locals.locations = data;
+      res.render("location/pooja.ejs", { title: tabTitle, res });
     })
     .catch((err) => {
       res.status(500).send({
