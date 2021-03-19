@@ -1,5 +1,5 @@
 // .sequelizerc
-const path = require('path');
+const path = require("path");
 
 module.exports = {
   config: path.resolve('./config/config', 'config.js'),

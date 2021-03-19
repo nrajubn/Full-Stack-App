@@ -1,4 +1,4 @@
-import locationsArray from '../location.js';
+import locationsArray from "./init-locations.js";
 import {isInsideQuad} from "./location-quad.js";
 
 let colorElement1 = document.getElementById("status1");
@@ -6,14 +6,14 @@ let colorElement2 = document.getElementById("status2");
 let device, location;
 
 function main() {
-    console.log('Page is fully loaded');
+    console.log("Page is fully loaded");
 }
 
-window.addEventListener('load', main);
-colorElement1.addEventListener('click', onClickSquareBox1);
-colorElement1.addEventListener('touch', onClickSquareBox1);
-colorElement2.addEventListener('click', onClickSquareBox2);
-colorElement2.addEventListener('touch', onClickSquareBox2);
+window.addEventListener("load", main);
+colorElement1.addEventListener("click", onClickSquareBox1);
+colorElement1.addEventListener("touch", onClickSquareBox1);
+colorElement2.addEventListener("click", onClickSquareBox2);
+colorElement2.addEventListener("touch", onClickSquareBox2);
 
 
 async function onClickSquareBox1() {

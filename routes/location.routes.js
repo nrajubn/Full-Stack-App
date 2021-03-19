@@ -8,7 +8,6 @@
  * Match each expeced verb + URL request
  * with a custom function to handle it
  *
- * @author Denise Case <dcase@nwmissouri.edu>
  */
 
 const router = require("express").Router();
