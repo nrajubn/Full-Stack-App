@@ -1,28 +1,32 @@
-   <!--
-   *  Location create view
-   *  Uses HTML and embedded JavaScript (EJS) <% if (location && location.error) { %>
-   *
-   -->
-    <% if (location && location.error) { %>
-    <div class="alert alert-danger" role="alert"><%- JSON.stringify(location.error) %></div>
-    <% } %>
-  
-  <div class="card">
-    <div class="card-header">
+<!--
+*  Location create view
+*  Uses HTML and embedded JavaScript (EJS) 
+*  to dyanmically create a webpage to create a new resource.
+*
+* 
+-->
+
+
+<% if (location && location.error) { %>
+  <div class="alert alert-danger" role="alert"><%- JSON.stringify(location.error) %></div>
+  <% } %>
+
+<div class="card">
+  <div class="card-header">
     <br>
     <br>
-      Add Location
-    </div>
-    <div class="card-body">
-      <form action="/location/save" method="post">
-        <div class="form-group">
-          <label for="locationName">Name:</label>
-          <input type="text" class="form-control" id="locationName" name="name" value="<%= location.name %>" autocomplete="off">
-        </div>
-        <br>
-        <div class="form-group">
-          <input type="submit" class="btn btn-info" title="Submits a POST /save request" value="Create" />
-        </div>
-      </form>
-    </div>
+    Add Location
   </div>
+  <div class="card-body">
+    <form action="/location/save" method="post">
+      <div class="form-group">
+        <label for="locationName">Name:</label>
+        <input type="text" class="form-control" id="locationName" name="locationName" value="<%= location.locationName %>" autocomplete="off">
+      </div>
+      <br>
+      <div class="form-group">
+        <input type="submit" class="btn btn-info" title="Submits a POST /save request" value="Create" />
+      </div>
+    </form>
+  </div>
+</div>

@@ -23,7 +23,7 @@ module.exports.findAll = async (req, res) => {
       {
         model: (await db).models.Location,
         attributes: ["id", "name"],
-      }
+      },
       
     ],
   })
