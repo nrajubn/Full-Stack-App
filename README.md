@@ -2,8 +2,10 @@
 
 Welcome to 'The Hunt', a full-stack location-based game app.
 
-## Published App: https://nrajubn.github.io/Full-Stack-App/ 
-## Heroku Link : https://fullstack-group5.herokuapp.com/ 
+## Published App: 
+## Heroku Link : https://grp5-full-stack-app.herokuapp.com/
+## link to homepage showing two color components : https://grp5-full-stack-app.herokuapp.com/
+## link to /location : https://grp5-full-stack-app.herokuapp.com/location
 
 ## Overview 
 - A location-based gaming application that assists the user in finding the treasure. 
