@@ -24,22 +24,22 @@ LOG.info("Starting location routing.");
 // handle two requests for JSON (HTTP GET)
 
 router.get("/findall", controller.findAll);
-router.get("/findone/:id", controller.findOne);
+router.get("/findone/:locationId", controller.findOne);
 
 // handle three requests to perform database actions (HTTP POST)
 
 router.post("/save", controller.saveNew);
-router.post("/save/:id", controller.saveEdit);
-router.post("/delete/:id", controller.deleteItem);
+router.post("/save/:locationId", controller.saveEdit);
+router.post("/delete/:locationId", controller.deleteItem);
 
 // handle five requests for webpages (HTTP GET)
 
 router.get("/", controller.showIndex);
 router.get("/create", controller.showCreate);
-router.get("/details/:id", controller.showDetails);
-router.get("/edit/:id", controller.showEdit);
+router.get("/details/:locationId", controller.showDetails);
+router.get("/edit/:locationId", controller.showEdit);
 
-router.get("/delete/:id", controller.showDelete);
+router.get("/delete/:locationId", controller.showDelete);
 router.get("/location", controller.showIndex);
 
 function checkUserAuth(req, res, next) {
