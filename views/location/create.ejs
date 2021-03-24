@@ -1,14 +1,5 @@
 
-<% if (location && location.error) { %>
-  <div class="alert alert-danger" role="alert"><%- JSON.stringify(location.error) %></div>
-  <% } %>
-<br>
-<br>
-<div class="card">
-  <div class="card-header">
-    Add Location
-  </div>
-  <!DOCTYPE html>
+  <!-- <!DOCTYPE html>
 <html>
   <head>
     <title>Educational registration form</title>
@@ -130,12 +121,17 @@
       }
     </style>
   </head>
-  <body>
-<!--   
-      <form  action="/location/save" method="post">
-        <div class="title">
-          <i class="fas fa-pencil-alt"></i>  -->
-          <!-- Add Location	 --> -->
+  <body> -->
+
+    <% if (location && location.error) { %>
+      <div class="alert alert-danger" role="alert"><%- JSON.stringify(location.error) %></div>
+      <% } %>
+    <br>
+    <br>
+    <div class="card">
+      <div class="card-header">
+        Add Location
+      </div>
   <div class="card-body">
             <form name="myForm" action="/location/save"  onsubmit="return validateForm()" method="post" >	
               <div class="form-group">	
@@ -157,13 +153,7 @@
                 <label for="locationLongitude">Location Longitude:</label>	
                 <input type="text" class="form-control"  id="locationLongitude" name="locationLongitude" value="<%= location.locationLongitude %>" autocomplete="off">	
               </div>
-          <!-- <input class="fname" type="text" name="name" placeholder="Location ID" value="<%= location.locationId %>" autocomplete="off">
-          <input type="text" name="name" placeholder="Location Name"  value="<%= location.locationName %>" autocomplete="off">
-          <input type="number" name="name" placeholder="Latitude" value="<%= location.locationLatitude %>" autocomplete="off">
-          <input type="number" name="name" placeholder="Longitude" value="<%= location.locationLongitude %>" autocomplete="off">
-         -->
-        <!-- </div> -->
-        <br>
+                  <br>
         <div class="form-group">
           <input type="submit" class="btn btn-info" title="Submits a POST /save request" value="Create" />
         </div>

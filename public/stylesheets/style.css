@@ -3,9 +3,9 @@ header{
     left: 41%;
     text-align: center;
   }
-  body{
+  /* body{
     overflow: hidden;
-  }
+  } */
   
   article {
     position: absolute;
