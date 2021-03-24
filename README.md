@@ -23,10 +23,13 @@ Welcome to 'The Hunt', a full-stack location-based game app.
 - [ ] As a player, after confirmation that I have earned a location: I want the game to ask me if I would like to select another location. If I select yes, we reset and begin again. 
 
 ## Stack
-- Express Framework
-- NoSQL
-- Heroku
-- PostgreSQL
+- Platform: Node(Version - v15.1.0)
+- Web Framework : Express
+- View engine : EJS
+- ORM(Object Relational Mapping) : Sequelize
+- Data store: PostgreSQL
+- API : Google Maps
+- Coding standards : Enforce AirBnB/Prettier/ESlint
 
 ## Team Members:
 
