@@ -15,8 +15,10 @@
     <table class="table">
       <thead>
         <tr>
-          <th scope="col">#</th>
-          <th scope="col">Name</th>
+          <th scope="col">Location Id</th>	
+          <th scope="col">Location Name</th>
+          <th scope="col">Location Latitude</th>	
+          <th scope="col">Location Longitude</th>
           <th >Action</th>
         </tr>
       </thead>
@@ -24,7 +26,9 @@
   
         <tr>
           <th scope="row"><%= location.locationId %></th>
-          <td><%= location.locationName%></td>
+            <td><%= location.locationName%></td>
+            <td><%= location.locationLatitude%></td>	
+            <td><%= location.locationLongitude%></td>
           <td>
             <a class="btn btn-success edit" href="/location">Done</a>
           </td>
