@@ -4,6 +4,7 @@ module.exports = (db, DataTypes) => {
       type: DataTypes.INTEGER,
       primaryKey: true,
       allowNull: false,
+      autoIncrement:true,
     },
     locationName: {
       type: DataTypes.STRING(30),
