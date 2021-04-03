@@ -1,6 +1,8 @@
 import locationsArray from "./init-locations.js";
 import { isInsideQuad } from "./location-quad.js";
 
+
+
 let colorElement1 = document.getElementById("status1");
 let colorElement2 = document.getElementById("status2");
 let device, location;

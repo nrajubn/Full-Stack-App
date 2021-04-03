@@ -133,7 +133,7 @@
         <h1>Add Location</h1>
       </div>
   <div class="card-body">
-            <form name="myForm" action="/location/save"  onsubmit="return validateForm()" method="post" >	
+            <form name="myForm" action="/location/save"   method="post" >	
               <div class="form-group_locId">	
                   
                 <label for="locationId">Location Id:</label>	
@@ -141,17 +141,17 @@
               </div>	
               <div class="form-group">	
                 <label for="locationName">Location Name:</label>	
-                <input type="text"  id="locationName" name="locationName" value="<%= location.locationName %>" autocomplete="off" required>	
+                <input type="text"  id="locationName" name="locationName" value="<%= location.locationName %>" pattern="^([a-zA-Z]+\s)*[a-zA-Z]+$" title="LocationName only letters and single spaces."autocomplete="off" required>	
               </div>	
               <br>	
               <div class="form-group">	
                 <label for="locationLatitude">Location Latitude:</label>	
-                <input type="text"  id="locationLatitude" name="locationLatitude" value="<%= location.locationLatitude %>" autocomplete="off" required >	
+                <input type="number"  id="locationLatitude" name="locationLatitude" value="<%= location.locationLatitude %>"  min=-90 max=90 step=.00001 autocomplete="off" required >	
               </div>	
               <br>	
               <div class="form-group">	
                 <label for="locationLongitude">Location Longitude:</label>	
-                <input type="text"   id="locationLongitude" name="locationLongitude" value="<%= location.locationLongitude %>" autocomplete="off" required>	
+                <input type="number"   id="locationLongitude" name="locationLongitude" value="<%= location.locationLongitude %>"  min=-180 max=180 step=.00001 autocomplete="off" required>	
               </div>
                   <br>
         <div class="form-group">
