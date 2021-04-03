@@ -134,10 +134,10 @@
       </div>
   <div class="card-body">
             <form name="myForm" action="/location/save"  onsubmit="return validateForm()" method="post" >	
-              <div class="form-group">	
+              <div class="form-group_locId">	
                   
                 <label for="locationId">Location Id:</label>	
-                <input type="text"  id="locationId" name="locationId" value="<%= location.locationId %>" autocomplete="off" required>	
+                <input type="number"  id="locationId" name="locationId" value="<%= location.locationId %>" autocomplete="on">	
               </div>	
               <div class="form-group">	
                 <label for="locationName">Location Name:</label>	
