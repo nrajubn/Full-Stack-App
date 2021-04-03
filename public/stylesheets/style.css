@@ -61,6 +61,11 @@ header{
     text-align: center;
   
   }
+
+  .form-group_locId{
+  display: none;
+ }
+
  html, body {
     min-height: 100%;
     }
