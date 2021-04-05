@@ -6,7 +6,7 @@ const locationRoutes = require("./location.routes");
 LOG.info("routes/index.js: STARTING custom routes......");
 const router = express.Router();
 
-const appTitle = "Full stack app";
+const appTitle = "Northwest Hunt";
 const appSubTitle = "Gaming app";
 
 /* GET home page. */
