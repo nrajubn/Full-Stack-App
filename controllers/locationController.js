@@ -5,7 +5,7 @@
  *
  
  */
-const { ValidationError } = require("sequelize");
+const { ValidationError } = require('sequelize');
 const LOG = require("../util/logger");
 const db = require("../models/index")();
 
@@ -67,7 +67,7 @@ module.exports.saveNew = async (req, res) => {
 // POST /save/:id
 module.exports.saveEdit = async (req, res) => {
   try {
-    const reqId = parseInt(req.params.locationId, 10);
+    const reqId = parseInt(req.params.locationId);
     const context = await db;
     const updated = await context.models.Location.update(req.body, {
       where: { locationId: reqId },
@@ -82,7 +82,7 @@ module.exports.saveEdit = async (req, res) => {
 // POST /delete/:id
 module.exports.deleteItem = async (req, res) => {
   try {
-    const reqId = parseInt(req.params.locationId, 10);
+    const reqId = parseInt(req.params.locationId);
     const deleted = (await db).models.Location.destroy({
       where: { locationId: reqId },
     });
@@ -141,8 +141,7 @@ module.exports.showDelete = async (req, res) => {
     })
     .catch((err) => {
       res.status(500).send({
-        message: `Error retrieving item with id=${locationId}: ${err.message}`,
-      });
+        message: `Error retrieving item with locationId=${locationId}: ${err.message}`,      });
     });
 };
 
