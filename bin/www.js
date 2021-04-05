@@ -95,12 +95,20 @@ const onListening = async () => {
   try {
     const db = await require("../models/index")();
     await require("../util/seeder")(db);
+    updatePostgreSequences(db);
   } catch (err) {
     LOG.error(`ERROR with database:${err.message}`);
   }
   const addr = server.address();
   const bind = typeof addr === "string" ? `pipe ${addr}` : `port ${addr.port}`;
   LOG.info(`Listening on ${bind}`);
+};
+const updatePostgreSequences = async (db) => {
+  if (process.env !== "production") return;
+  const extistingLocations = await db.models.location.count();
+  await db.queryInterface.sequelize.query(
+    `ALTER SEQUENCE "locations_id_seq" RESTART WITH ${extistingLocations + 1}`
+  );
 };
 
 /**
