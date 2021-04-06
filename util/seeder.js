@@ -26,40 +26,87 @@ module.exports = async (db) => {
   }
 
   try {
-    await db.models.Location.bulkCreate(
+    await db.models.location.bulkCreate(
       [
-        // first quest locations........
         {
-          locationId: 1,
-          locationName: "Horizons west",
-          locationLatitude: 40.35156,
-          locationLongitude: -94.88267
-        },
-        {
-          locationId: 2,
+          id: 1,
           locationName: "Colden Pond",
-          locationLatitude: 40.35112,
-          locationLongitude: -94.8822,
         },
         {
-          locationId: 3,
-          locationName: "Student Union",
-          locationLatitude: 40.35139,
-          locationLongitude: -94.88289,
-        },
-        {
-          locationId: 4,
-          locationName: "Bearcat Soccer field",
-          locationLatitude: 40.35156,
-          locationLongitude: -94.88254,
+          id: 2,
+          locationName: "Villago",
         },
       ],
       { validate: true } // add options object to call new model validators
     );
-    const num = await db.models.Location.count();
-    LOG.info(`Seeded ${num} locations.`);
+
+    const locationsCount = await db.models.location.count();
+
+    LOG.info(`Seeded ${locationsCount} locations .`);
   } catch (err) {
-    LOG.error(`ERROR: Location seeding - ${err.message}`);
+    LOG.error(`ERROR: Location seeding - ${err}`);
+  }
+
+  try {
+    await db.models.coordinate.bulkCreate(
+      [
+        {
+          id: 1,
+          locationId: 1,
+          latitude: 40.3530752049,
+          longitude: -94.8865039605,
+        },
+        {
+          id: 2,
+          locationId: 1,
+          latitude: 40.3530752049,
+          longitude: -94.8861437058,
+        },
+        {
+          id: 3,
+          locationId: 1,
+          latitude: 40.3524272449,
+          longitude: -94.8861437058,
+        },
+        {
+          id: 4,
+          locationId: 1,
+          latitude: 40.3524272449,
+          longitude: -94.8865039605,
+        },
+        {
+          id: 5,
+          locationId: 2,
+          latitude: 40.36085711,
+          longitude: -94.88815211,
+        },
+        {
+          id: 6,
+          locationId: 2,
+          latitude: 40.36084911,
+          longitude: -94.88748911,
+        },
+        {
+          id: 7,
+          locationId: 2,
+          latitude: 40.36049511,
+          longitude: -94.88751111,
+        },
+        {
+          id: 8,
+          locationId: 2,
+          latitude: 40.36052111,
+          longitude: -94.88821111,
+        },
+      ],
+      { validate: true } // add options object to call new model validators
+    );
+
+    const coordinatesCount = await db.models.coordinate.count();
+
+    LOG.info(`Seeded ${coordinatesCount} coordinates .`);
+  } catch (err) {
+    LOG.error(`ERROR: Coordinates seeding - ${err}`);
   }
 
   LOG.info("Done with seeder................");
