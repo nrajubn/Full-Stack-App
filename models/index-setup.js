@@ -11,15 +11,23 @@
  */
 
 module.exports = async (sequelize) => {
-    const {
-      
-      Location,
-    
-      
-    } = await sequelize.models;
+  const {
+    location,
+    coordinate,
+    // Clue,
+  } = await sequelize.models;
 
+  location.hasMany(coordinate, {
+    foreignKey: { allowNull: false },
+    onDelete: "CASCADE",
+    as: "coordinate",
+  });
 
-  // one location can have many clues
-  // Location.hasMany(Clue);
-  // Clue.belongsTo(Location);
+  coordinate.belongsTo(location, {
+    foreignKey: { allowNull: false },
+    onDelete: "CASCADE",
+    as: "location",
+  });
+
+  
 };
