@@ -104,11 +104,16 @@ const onListening = async () => {
   LOG.info(`Listening on ${bind}`);
 };
 const updatePostgreSequences = async (db) => {
-  if (process.env.NODE_ENV!== "production") return;
-  // const extistingLocations = await db.models.location.count();
-  // await db.queryInterface.sequelize.query(
-  //   `ALTER SEQUENCE "locations_id_seq" RESTART WITH ${extistingLocations + 1}`
-  // );
+  if (process.env !== "production") return;
+   const extistingLocations = await db.models.location.count();
+   await db.queryInterface.sequelize.query(
+   `ALTER SEQUENCE "locations_id_seq" RESTART WITH ${extistingLocations + 1}`
+   );
+  await db.queryInterface.sequelize.query(
+    `ALTER SEQUENCE "coordinates_id_seq" RESTART WITH ${
+      extistingCoordinates + 1
+    }`
+  );
 };
 
 /**
