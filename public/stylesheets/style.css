@@ -15,23 +15,23 @@ header{
     margin-top: -100px;
   }
 
-#status1 {
-    height: 150px;
-    width: 200px;
-    background: #1cebad;
+.row {
+    height: 350px;
+    width: 350px;
+    /* background: #1cebad; */
     float: bottom;
-    margin-left: 10px;
-    border: 1px solid #ccc;
+    margin: auto;
+    border: 5px solid #ccc;
   }
   
-  #status2 {
+  /* #status2 {
     height: 200px;
     width: 200px;
     background: #7aeb7a;
     float: top;
     margin-left: 10px;
     border: 1px solid #ccc;
-  }
+  } */
 
 #foot {
     background-color: #00674C;
@@ -141,4 +141,10 @@ header{
     .left-part, form {
     flex: 1;
     height: auto;
+    }
+
+    .background{
+    background-image: url(/public/images/homepage.jpg) ;
+    background-position: "fixed";
+
     }
