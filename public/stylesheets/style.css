@@ -27,7 +27,7 @@ header{
   #status1 {
     height: 200px;
     width: 200px;
-    background:lightskyblue;
+    background:rgb(179, 226, 141);
     /* float: left;
     margin-left: 2px; */
     border: 1px solid #ccc;
@@ -36,7 +36,7 @@ header{
   #status2 {
     height: 200px;
     width: 200px;
-    background: #7aeb7a;
+    background: #e48c90;
     /* float: top;
     margin-left: 10px; */
     border: 1px solid #ccc;

@@ -39,7 +39,7 @@
           <tr>
             <th scope="col">Location ID</th>	
             <th scope="col">Location Name</th>	
-            <th scope="col">Bounding box</th>	
+            <th scope="col">Quad Coordinates</th>	
             <th >Actions</th>
           </tr>
         </thead>
@@ -73,17 +73,17 @@
           </td>
           <td>
             <a
-              class="btn btn-primary details"
+              class="btn btn-outline-primary"
               href="../location/details/<%=locations[i].id%>"
-              ><i class="fab fa-sistrix" title="test"></i
+              ><i class="fas fa-binoculars" title="test"></i
             ></a>
             <a
-              class="btn btn-success edit"
+              class="btn btn-outline-warning"
               href="../location/edit/<%=locations[i].id%>"
-              ><i class="fas fa-pencil-alt"></i
+              ><i class="fas fa-edit"></i
             ></a>
             <a
-              class="btn btn-danger delete"
+              class="btn btn-outline-danger"
               href="../location/delete/<%=locations[i].id%>"
               ><i class="fas fa-trash-alt"></i
             ></a>
