@@ -30,7 +30,7 @@
         integrity="sha512-3IezTrk95L3ES54Xc2nOLQkzSyr0/Mkd4DRJxDQXNYuQupAfxHgR4CsflMVlqjelwlMaB6q5ODM5ppJZimS7dw=="
         crossorigin="anonymous" />
     <!-- Custom styles at the end -->
-    <link href='../stylesheets/style.css' rel='stylesheet' type="text/css" />
+    <link href='/stylesheets/style.css' rel='stylesheet' type="text/css" />
     <!-- <script type="module" src="../scripts/main.js"></script> -->
 </head>
 
@@ -40,13 +40,11 @@
 
     <%- include ('header.ejs') %>
 
-    <main class="background">
-        <!-- <div class="row">
-            <div class="col">  -->
+    <main class="container context">
+        <div class="row mt-11">
+            <!-- This part will get replaced with each view. -->
+             <%- body %>
 
-           
-
-            <%- body %>
         </div>
         
         </div>
