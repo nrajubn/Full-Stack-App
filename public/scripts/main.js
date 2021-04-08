@@ -5,6 +5,8 @@ import { isInsideQuad,getLocationDirections } from "./location-quad.js";
 
 let colorElement1 = document.getElementById("status1");
 let colorElement2 = document.getElementById("status2");
+let resetButton = document.getElementById("reset-button");
+
 let device, location;
 
 function main() {
@@ -36,6 +38,32 @@ async function onClickSquareBox1() {
 });
 }
 async function onClickSquareBox2() {
+  if (!location) {
+    /* Error handling and a timed popup notification if no location is selected but the players clicks on the second box. */
+    let timerInterval;
+    Swal.fire({
+      title: "Please select a location first!",
+      html: "I will close in <b></b> milliseconds.",
+      timer: 2000,
+      timerProgressBar: true,
+      didOpen: () => {
+        Swal.showLoading();
+        timerInterval = setInterval(() => {
+          const content = Swal.getContent();
+          if (content) {
+            const b = content.querySelector("b");
+            if (b) {
+              b.textContent = Swal.getTimerLeft();
+            }
+          }
+        }, 100);
+      },
+      willClose: () => {
+        clearInterval(timerInterval);
+      },
+    });
+    return;
+  }
   device = await getLocation();
 
   let isInside = isInsideQuad(device, location);

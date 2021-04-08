@@ -1,42 +1,104 @@
-<!--
-*  Location edit view
-*  Uses HTML and embedded JavaScript (EJS) 
-*  to dyanmically create a webpage to edit the resource.
-*
-* 
--->
-<br>
+<br />
+<br />
 
-<div class="card">
-<div class="card-header">
-  Edit Location
-</div>
-<div class="card-body">
-  <form action="/location/save/<%= location.locationId %>" method="post">
+<div class="new">
+  <div class="card-header">Edit Location</div>
+  <div class="card-b">
+    <form action="/location/save/<%= location.id %>" method="post">
+      <div class="form-group-hidden">
+        <label for="id">Location Id:</label>
+        <input
+          type="number"
+          class="form-control"
+          id="id"
+          name="id"
+          value="<%= location.id %>"
+          autocomplete="on"
+        />
+      </div>
+      <div class="form-group">
+        <label for="locationName">Location Name:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="locationName"
+          name="locationName"
+          pattern="^([a-zA-Z]+\s)*[a-zA-Z]+$"
+          value="<%= location.locationName %>"
+          title="LocationName only letters and single spaces, no numbers or punctuation."
+          autocomplete="off"
+          required
+        />
+      </div>
+      <div class="row form-group">
+        <% for(let index = 0; index< 4; index++) { %>
+        <div class="form-group-hidden">
+          <label for="coordinate[<%= index %>][id]">Coordinate Id:</label>
+          <input
+            type="number"
+            class="form-control"
+            id="coordinate[<%= index %>][id]"
+            name="coordinate[<%= index %>][id]"
+            value="<%= location.coordinate[index].id %>"
+            autocomplete="on"
+          />
+        </div>
+        <div class="form-group-hidden">
+          <label for="coordinate[<%= index %>][locationId]">Location Id:</label>
+          <input
+            type="number"
+            class="form-control"
+            id="coordinate[<%= index %>][locationId]"
+            name="coordinate[<%= index %>][locationId]"
+            value="<%= location.coordinate[index].locationId %>"
+            autocomplete="on"
+          />
+        </div>
+        <div class="col-md-6 mb-1 mt-3">
+          <label for="coordinate[<%= index %>][latitude]" class="col-md-6"
+            >Point <%= index+1 %> - Latitude:</label
+          >
+          <input
+            type="number"
+            class="form-control col-md-6"
+            id="coordinate[<%= index %>][latitude]"
+            name="coordinate[<%= index %>][latitude]"
+            value="<%= location.coordinate[index].latitude %>"
+            min="-90"
+            max="90"
+            step=".00000001"
+            autocomplete="off"
+            required
+          />
+        </div>
+        <div class="col-md-6 mb-1 mt-3">
+          <label for="coordinate[<%= index %>][longitude]"
+            >Point <%= index+1 %> - Longitude:</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            id="coordinate[<%= index %>][longitude]"
+            name="coordinate[<%= index %>][longitude]"
+            value="<%= location.coordinate[index].longitude %>"
+            min="-180"
+            max="180"
+            step=".00000001"
+            autocomplete="off"
+            required
+          />
+        </div>
+        <% } %>
+      </div>
 
-    <div class="form-group">
-      <label for="locationName">Location Name:</label>
-      <input type="text" class="form-control" id="locationName" name="locationName" value="<%= location.locationName %>"  pattern="^([a-zA-Z]+\s)*[a-zA-Z]+$" title="LocationName is only letters and single spaces." autocomplete="off">
-    </div>
-   
-    <br>
-
-    <div class="form-group">
-      <label for="locationLatitude">Location Latitude:</label>
-      <input type="number" class="form-control" id="locationLatitude" name="locationLatitude" value="<%= location.locationLatitude %>" min=-90 max=90 step=.00001 autocomplete="off">
-    </div>
-    <br>
-
-    <div class="form-group">
-      <label for="locationLongitude">Location Longitude:</label>
-      <input type="number" class="form-control" id="locationLongitude" name="locationLongitude" value="<%= location.locationLongitude %>" min=-180 max=180 step=.00001 autocomplete="off">
-    </div>
-    <br>
-
-    <div class="form-group">
-      <input type="submit" class="btn btn-info" title="Submits a POST /save/:locationId request" value="Save" />
-    </div>
-    
-  </form>
-</div>
+      <div class="form-group mt-3">
+        <input
+          type="submit"
+          class="btn btn-info"
+          title="Submits a POST /save/:locationId request"
+          value="Save"
+        />
+      </div>
+    </form>
+  </div>
 </div>

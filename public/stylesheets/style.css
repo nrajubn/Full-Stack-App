@@ -42,9 +42,7 @@ header{
     color: white;
     text-align: center;
 }
-
-  
-  #foot{
+    #foot{
     position: fixed;
     padding: 10px 10px 0px 10px;
     bottom: 0;
@@ -56,17 +54,12 @@ header{
     text-align: center;
   
   }
-  
-  .navbar-brand{
+    .navbar-brand{
     text-align: center;
   
   }
 
-  .form-group_locId{
-  display: none;
- }
-
- html, body {
+   html, body {
     min-height: 100%;
     }
     body, div, form, input, select, p { 
@@ -148,3 +141,11 @@ header{
     background-position: "fixed";
 
     }
+    .card{
+      font-size: large;
+    }
+
+    .form-hidden{
+      display:none;
+    }
+    

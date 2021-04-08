@@ -46,10 +46,13 @@ app.use(expressLayouts);
 app.use(morgan('combined'));
 
 // app middleware - production
- app.use(helmet()); // security, http headers
+ app.use(helmet({
+  contentSecurityPolicy: false,
+})
+ ); // security, http headers
 app.use(compression()); // compress all routes
 
-// app middleware - expose passport req.user to views
+// app middleware - expose passport req.location to views
 app.use((req, res, next) => {
   res.locals.location = req.location;
   next();

@@ -5,6 +5,9 @@
 *
 * 
 -->
+<br>
+<br>
+<br>
 
 <% if (location.error) { %>
   <div class="alert alert-danger" role="alert"><%- location.error %></div>
@@ -17,22 +20,41 @@
         <tr>
           <th scope="col">Location Id</th>	
           <th scope="col">Location Name</th>
-          <th scope="col">Location Latitude</th>	
-          <th scope="col">Location Longitude</th>
-          <th >Action</th>
+          <th scope="col">Bounding Box</th>	
+          
+          <th >Actions</th>
         </tr>
       </thead>
       <tbody>
   
         <tr>
-          <th scope="row"><%= location.locationId %></th>
-            <td><%= location.locationName%></td>
-            <td><%= location.locationLatitude%></td>	
-            <td><%= location.locationLongitude%></td>
+          <th scope="row"><%= location.id %></th>
+          <td><%= location.locationName%></td>
+          <td>
+            <table>
+              <tr class="coord-cell-header">
+                <th>Point#</th>
+                <th class="coord-cell">Latitude</th>
+                <th class="coord-cell">Longitude</th>
+              </tr>
+              <% for(let coordsIndex = 0; coordsIndex< location.coordinate.length;
+              coordsIndex++) { %>
+              <tr>
+                <td><%= coordsIndex+1%></td>
+                <td class="coord-cell">
+                  <%= location.coordinate[coordsIndex].latitude%>
+                </td>
+                <td class="coord-cell">
+                  <%= location.coordinate[coordsIndex].longitude%>
+                </td>
+              </tr>
+              <% } %>
+            </table>
+          </td>
           <td>
             <a class="btn btn-success edit" href="/location">Done</a>
           </td>
         </tr>
-  
       </tbody>
     </table>
+  </div>
