@@ -30,7 +30,7 @@ async function onClickSquareBox1() {
       type: "quad",	
       coordinates: coord.coordinate,	
     };	
-    let confirmation = "Your target location is " + location.name;	
+    let confirmation = "Your target location is set"+"\n"+"Start finding it!!";	
     colorElement1.innerHTML = confirmation;	
     let utterance = new SpeechSynthesisUtterance(confirmation);	
     speechSynthesis.speak(utterance);	
