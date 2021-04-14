@@ -36,7 +36,7 @@ async function onClickSquareBox1() {
       type: "quad",	
       coordinates: coord.coordinate,	
     };	
-    let confirmation = "Your target location is " set"+"\n"+"Start finding it!!";	
+    let confirmation = "Your target location is ready" +"\n"+" Start Finding !!";	
     colorElement1.innerHTML = confirmation;	
     let utterance = new SpeechSynthesisUtterance(confirmation);	
     speechSynthesis.speak(utterance);	
@@ -48,7 +48,7 @@ async function onClickSquareBox2() {
     /* Error handling and a timed popup notification if no location is selected but the players clicks on the second box. */
     let timerInterval;
     Swal.fire({
-      title: "Please select a location first!",
+      title: "select a location first!",
       html: "I will close in <b></b> milliseconds.",
       timer: 2000,
       timerProgressBar: true,
@@ -84,7 +84,7 @@ async function onClickSquareBox2() {
       .fire({	
         title: "Congratulations, you have solved your quest!",	
         text:	
-          "It looks like you enjoyed your quest, wanna double the enjoyment and play again?",	
+          "It appears that you enjoyed your quest; would you like to play it again for double the fun?",	
         width: 600,	
         padding: "3em",	
         background: "#fff url(/images/trees.png)",	
@@ -153,6 +153,7 @@ async function getLocation() {
     };	
   });	
 }	
+//reset functionality
 function resetScavenger() {
   colorElement1.innerHTML = "";
   colorElement2.innerHTML = "";
