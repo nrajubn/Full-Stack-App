@@ -153,3 +153,8 @@ async function getLocation() {
     };	
   });	
 }	
+function resetScavenger() {
+  colorElement1.innerHTML = "";
+  colorElement2.innerHTML = "";
+  location = null;
+}
