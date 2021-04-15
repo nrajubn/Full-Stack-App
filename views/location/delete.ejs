@@ -5,36 +5,61 @@
 *
 * 
 -->
-  
-<% if (location.error) { %>
+
+  <% if (location.error) { %>
   <div class="alert alert-danger" role="alert"><%- location.error %></div>
   <% } %>
-  
+  <br />
+  <br />
   <div class="card-body">
   
     <table class="table">
       <thead>
         <tr>
-          <th scope="col">ID</th>
-          <th scope="col">Name</th>
-          <th scope="col">Location Latitude</th>	
-          <th scope="col">Location Longitude</th>
-          <th width=>Action</th>
+          <th scope="col">Location ID</th>
+          <th scope="col">Location Name</th>
+          <th scope="col">Quad Coordinates</th>	
+          <th>Actions</th>
         </tr>
       </thead>
       <tbody>
   
         <tr>
-          <th scope="row"><%= location.locationId %></th>
+          <th scope="row"><%= location.id %></th>
             <td><%= location.locationName%></td>
-            <td><%= location.locationLatitude%></td>	
-            <td><%= location.locationLongitude%></td>
-          <td>
-            <form action="/location/delete/<%=location.locationId%>" method="post">
-              <input type="submit" class="btn btn-danger delete" value="Delete" onclick="return alert('Are you sure?')"/>
-            </form>
-          </td>
-        </tr>
-  
-      </tbody>
-    </table>
+            <td>
+              <table>
+                <tr class="coord-cell-header">
+                  <th>Point#</th>
+                  <th class="coord-cell">Latitude</th>
+                  <th class="coord-cell">Longitude</th>
+                </tr>
+                <% for(let coordsIndex = 0; coordsIndex< location.coordinate.length;
+                coordsIndex++) { %>
+                <tr>
+                  <td><%= coordsIndex+1%></td>
+                  <td class="coord-cell">
+                    <%= location.coordinate[coordsIndex].latitude%>
+                  </td>
+                  <td class="coord-cell">
+                    <%= location.coordinate[coordsIndex].longitude%>
+                  </td>
+                </tr>
+                <% } %>
+              </table>
+            </td>
+    
+            <td>
+              <form action="/location/delete/<%=location.id%>" method="post">
+                <input
+                  type="submit"
+                  class="btn btn-danger delete"
+                  value="Delete"
+                  onclick="return alert('Do you want to delete?')"
+                />
+              </form>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>

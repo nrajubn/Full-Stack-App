@@ -25,6 +25,7 @@ LOG.info("Starting location routing.");
 
 router.get("/findall", controller.findAll);
 router.get("/findone/:locationId", controller.findOne);
+router.get("/get-a-random-location", controller.getARandomLocation);
 
 // handle three requests to perform database actions (HTTP POST)
 

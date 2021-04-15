@@ -15,25 +15,34 @@ header{
     margin-top: -100px;
   }
 
-#status1 {
-    height: 150px;
+/* .row {
+    height: 350px;
+    width: 350px;
+    /* background: #1cebad; */
+    /* float: bottom;
+    margin: auto;
+    border: 5px solid #ccc;
+  } */ 
+
+  #status1 {
+    height: 200px;
     width: 200px;
-    background: #1cebad;
-    float: bottom;
-    margin-left: 10px;
+    background:rgb(179, 226, 141);
+    /* float: left;
+    margin-left: 2px; */
     border: 1px solid #ccc;
   }
   
   #status2 {
     height: 200px;
     width: 200px;
-    background: #7aeb7a;
-    float: top;
-    margin-left: 10px;
+    background: #e48c90;
+    /* float: top;
+    margin-left: 10px; */
     border: 1px solid #ccc;
-  }
+   }
 
-#foot {
+/* #foot {
     background-color: #00674C;
     position: fixed;
     left: 0;
@@ -41,14 +50,12 @@ header{
     width: 100%;
     color: white;
     text-align: center;
-}
-
-  
-  #foot{
+} */ 
+    #foot{
     position: fixed;
     padding: 10px 10px 0px 10px;
     bottom: 0;
-     left:0; 
+     /* left:0;  */
     width: 100%;
      height: 60px; 
     color:white;
@@ -56,89 +63,58 @@ header{
     text-align: center;
   
   }
-  
-  .navbar-brand{
-    text-align: center;
+    .navbar-brand{
+    text-align: left;
   
   }
 
-  .form-group_locId{
-  display: none;
- }
-
- html, body {
-    min-height: 100%;
+   html, body {
+    height: 100%;
     }
-    body, div, form, input, select, p { 
-    padding: 0;
-    margin: 0;
-    outline: none;
-    font-family: Roboto, Arial, sans-serif;
-    font-size: 16px;
-    color: #eee;
+    .card-header {
+      font-weight: bold;
+      font-size: large;
     }
+    
+    .form-group_locId,
+    .form-group-hidden {
+      display: none;
+    }
+    
+    html,
     body {
-  
-    background-size: cover;
-    }
-    h1 {
-    text-transform: uppercase;
-    font-weight: 400;
-    color: black;
-
-    }
-    h1 {
-    margin: 0 0 0 8px;
+      height: 100%;
     }
     
-    .left-part, form {
-    padding: 25px;
-    }
-   
-  
-    form {
-    background: rgba(0, 0, 0, 0.7); 
-    }
-    .title {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-    }
-    .info {
-    display: flex;
-    flex-direction: column;
-    }
-    input, select {
-    padding: 5px;
-    margin-bottom: 30px;
-    background: transparent;
-    border: none;
-    border-bottom: 1px solid #eee;
-    }
-    input::placeholder {
-    color: #eee;
+    body {
+      display: flex;
+      flex-direction: column;
     }
     
-   
-    .btn-item, button {
-    padding: 10px 5px;
-    margin-top: 20px;
-    border-radius: 5px; 
-    border: none;
-    background: #26a9e0; 
-    text-decoration: none;
-    font-size: 15px;
-    font-weight: 400;
-    color: #fff;
+    #container {
+      flex: 1 0 auto;
     }
-    .btn-item {
-    display: inline-block;
-    margin: 20px 5px 0;
+    
+    #reset-button{
+      color: white;
+      background-color: chocolate;
+      width: 80px;
     }
-    input {
-    width: 100%;
+  
+    td,
+    th {
+      vertical-align: middle;
     }
-    .left-part, form {
-    flex: 1;
-    height: auto;
+    
+    .coord-cell-header {
+      padding: 10px;
     }
+    
+    .coord-cell {
+      min-width: 110px;
+      text-align: center;
+    }
+    
+main {
+  margin-top: 100px !important;
+}

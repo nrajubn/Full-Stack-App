@@ -14,12 +14,14 @@
   <div class="alert alert-success" role="alert"><%- location.success %></div>
   <% } %>
   
+
   <% if (locals.locations.error) { %>
   <div class="alert alert-danger" role="alert"><%- location.error %></div>
   <% } %>
   
   <div class="card">
     <div class="card-header">
+    
       <ul class="nav nav-pills w-100">
         <li class="nav-pill active">
           <a class="nav-link">Locations</a>
@@ -37,37 +39,68 @@
           <tr>
             <th scope="col">Location ID</th>	
             <th scope="col">Location Name</th>	
-            <th scope="col">Location Latitude</th>	
-            <th scope="col">Location Longitude</th>
-            <th >Action</th>
+            <th scope="col">Quad Coordinates</th>	
+            <th >Actions</th>
           </tr>
         </thead>
         <tbody>
           <% for(let i = 0; i< locations.length; i++) { %>
           <tr>
-            <th scope="row"><%= locations[i].locationId %></th>
+            <th scope="row"><%= locations[i].id %></th>
             <td><%= locations[i].locationName%></td>
-            <td><%= locations[i].locationLatitude%></td>	
-            <td><%= locations[i].locationLongitude%></td>
+            <!-- <td><%= locations[i].locationLatitude%></td>	
+            <td><%= locations[i].locationLongitude%></td> -->
             <td>
-              <a class="btn btn-primary details" href="../location/details/<%=locations[i].locationId%>"><i
-                  class="fab fa-sistrix" title="test"></i></a>
-              <a class="btn btn-success edit" href="../location/edit/<%=locations[i].locationId%>"><i class="fas fa-user-edit"></i></a>
-              <a class="btn btn-danger delete" href="../location/delete/<%=locations[i].locationId%>"><i
-                  class="fas fa-trash-alt"></i></a>
-            </td>
-          </tr>
-          <% } %>
-        </tbody>
-      </table>
-      <% } %>
-  
+            <table>
+              <tr class="coord-cell-header">
+                <th>Point#</th>
+                <th class="coord-cell">Latitude</th>
+                <th class="coord-cell">Longitude</th>
+              </tr>
+              <% for(let coordsIndex = 0; coordsIndex<
+              locations[i].coordinate.length; coordsIndex++) { %>
+              <tr>
+                <td><%= coordsIndex+1%></td>
+                <td class="coord-cell">
+                  <%= locations[i].coordinate[coordsIndex].latitude%>
+                </td>
+                <td class="coord-cell">
+                  <%= locations[i].coordinate[coordsIndex].longitude%>
+                </td>
+              </tr>
+              <% } %>
+            </table>
+          </td>
+          <td>
+            <a
+              class="btn btn-outline-primary"
+              href="../location/details/<%=locations[i].id%>"
+              ><i class="fas fa-binoculars" title="test"></i
+            ></a>
+            <a
+              class="btn btn-outline-warning"
+              href="../location/edit/<%=locations[i].id%>"
+              ><i class="fas fa-edit"></i
+            ></a>
+            <a
+              class="btn btn-outline-danger"
+              href="../location/delete/<%=locations[i].id%>"
+              ><i class="fas fa-trash-alt"></i
+            ></a>
+          </td>
+        </tr>
+        <% } %>
+      </tbody>
+    </table>
+    <% } %>
+  </td>
+           
       <!-- if result is empty -->
       <% if(!locations.length) { %>
       <p class="text-center">No locations found!</p>
       <% } %>
   
-      <br>
+      <br/>
       <!-- <h3>Mouse over icons to see where you will go.</h3>
    -->
     </div>

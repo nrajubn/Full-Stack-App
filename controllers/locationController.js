@@ -5,7 +5,8 @@
  *
  
  */
-const { ValidationError } = require('sequelize');
+const { Sequelize} = require("sequelize");
+// const { ValidationError } = require('sequelize');
 const LOG = require("../util/logger");
 const db = require("../models/index")();
 
@@ -15,23 +16,24 @@ const tabTitle = "Locations";
 
 // GET all JSON
 module.exports.findAll = async (req, res) => {
-  (await db).models.Location.findAll({
+  (await db).models.location.findAll({
     attributes: {
       exclude: ["createdAt", "updatedAt"],
     },
-    include: [
-      {
-        model: (await db).models.Location,
-        attributes: ["locationId", "locationName"],
-      },
+    // include: [
+    //   {
+    //     model: (await db).models.Location,
+    //     attributes: ["locationId", "locationName"],
       
-    ],
+      include: ["coordinate"],
+    
   })
     .then((data) => {
-      localStorage.setItem("locations",JSON.stringify(data));
+      // localStorage.setItem("locations",JSON.stringify(data));
       res.send(data);
     })
     .catch((err) => {
+      LOG.error(`Error: ${JSON.stringify(err)}`);
       res.status(500).send({
         message: err.message || "Error retrieving all.",
       });
@@ -41,16 +43,43 @@ module.exports.findAll = async (req, res) => {
 // GET one JSON by ID
 module.exports.findOne = async (req, res) => {
   const { locationId } = req.params;
-  (await db).models.Location.findByPk(locationId)
+  (await db).models.location.findByPk(locationId)
     .then((data) => {
       res.send(data);
     })
     .catch((err) => {
+      LOG.error(`Error: ${JSON.stringify(err)}`);
       res.status(500).send({
         message: `Error retrieving item with id=${locationId}: ${err.message}`,
       });
     });
+
 };
+// GET a random location and it's coordinates	
+module.exports.getARandomLocation = async (req, res) => {	
+  (await db).models.location	
+    .findAll({	
+      attributes: {	
+        exclude: ["createdAt", "updatedAt"],	
+      },	
+      include: [	
+        {	
+          model: (await db).models.coordinate,	
+          as: "coordinate",	
+        },	
+      ],	
+    })	
+    .then((data) => {	
+      res.send(data[Math.floor(Math.random() * (data.length - 0) + 0)]);	
+    })	
+    .catch((err) => {	
+      LOG.error(`Error: ${JSON.stringify(err)}`);	
+      res.status(500).send({	
+        message: err.message || "Error retrieving all.",	
+      });	
+    });	
+};	
+
 
 // HANDLE EXECUTE DATA MODIFICATION REQUESTS -----------------------------------
 
@@ -58,9 +87,18 @@ module.exports.findOne = async (req, res) => {
 module.exports.saveNew = async (req, res) => {
   try {
     const context = await db;
-    await context.models.Location.create(req.body);
+    await context.models.location.create(req.body,{
+      include: [	
+        {	
+          model: context.models.coordinate,	
+          as: "coordinate",	
+        },	
+      ],	
+    });
+    
     return res.redirect("/location");
   } catch (err) {
+    LOG.error(`Error: ${JSON.stringify(err)}`);
     return res.redirect("/location");
   }
 };
@@ -70,46 +108,62 @@ module.exports.saveEdit = async (req, res) => {
   try {
     const reqId = parseInt(req.params.locationId);
     const context = await db;
-    const updated = await context.models.Location.update(req.body, {
-      where: { locationId: reqId },
+    const updated = await context.models.location.update(req.body, {
+     	
+      where: { id: reqId },	
+    });	
+    req.body.coordinate.map(async (coord) => {	
+      await context.models.coordinate.update(coord, {	
+        where: { id: coord.id },	
+      });	
     });
-    LOG.info(`Updated: ${JSON.stringify(updated)}`);
-    return res.redirect("/location");
-  } catch (err) {
-    return res.redirect("/location");
-  }
-};
+    LOG.info(`Updated: ${JSON.stringify(updated)}`);	
+    return res.redirect("/location");	
+  } catch (err) {	
+    LOG.error(`Error: ${JSON.stringify(err)}`);	
+    return res.redirect("/location");	
+  }	
+};	
 
 // POST /delete/:id
 module.exports.deleteItem = async (req, res) => {
   try {
     const reqId = parseInt(req.params.locationId);
-    const deleted = (await db).models.Location.destroy({
-      where: { locationId: reqId },
+    const deleted = (await db).models.location.destroy({
+      where: { id: reqId },
     });
     if (deleted) {
       return res.redirect("/location");
     }
     throw new Error(`${reqId} not found`);
   } catch (err) {
+    LOG.error(`Error: ${JSON.stringify(err)}`);
     return res.status(500).send(err.message);
   }
 };
-
-
-
-
 
 // RESPOND WITH VIEWS  --------------------------------------------
 
 // GET to this controller base URI (the default)
 module.exports.showIndex = async (req, res) => {
-  (await db).models.Location.findAll()
+  (await db).models.location.findAll({
+  attributes: {	
+    exclude: ["createdAt", "updatedAt"],	
+  },	
+  include: [	
+    {	
+      model: (await db).models.coordinate,	
+      attributes: ["latitude", "longitude"],	
+      as: "coordinate",	
+    },	
+  ],	
+})
     .then((data) => {
       res.locals.locations = data;
       res.render("location/index.ejs", { title: tabTitle, res });
     })
     .catch((err) => {
+      LOG.error(`Error: ${JSON.stringify(err)}`);
       res.status(500).send({
         message: err.message || "Error retrieving all.",
       });
@@ -131,16 +185,28 @@ module.exports.showCreate = async (req, res) => {
 // GET /delete/:id
 module.exports.showDelete = async (req, res) => {
   const { locationId } = req.params;
-  (await db).models.Location.findByPk(locationId)
-    .then((data) => {
+  (await db).models.location.findByPk(locationId,{
+    attributes: {	
+      exclude: ["createdAt", "updatedAt"],	
+    },	
+    include: [	
+      {	
+        model: (await db).models.coordinate,	
+        attributes: ["latitude", "longitude"],	
+        as: "coordinate",	
+      },	
+    ],	
+  })
+      .then((data) => {
       res.locals.location = data;
       if (data) {
         res.render("location/delete.ejs", { title: tabTitle, res });
       } else {
-        res.redirect("location/");
+        res.redirect("/location");
       }
     })
     .catch((err) => {
+      LOG.error(`Error: ${JSON.stringify(err)}`);
       res.status(500).send({
         message: `Error retrieving item with locationId=${locationId}: ${err.message}`,      });
     });
@@ -149,12 +215,24 @@ module.exports.showDelete = async (req, res) => {
 // GET /details/:id
 module.exports.showDetails = async (req, res) => {
   const { locationId } = req.params;
-  (await db).models.Location.findByPk(locationId)
+  (await db).models.location.findByPk(locationId,{
+    attributes: {	
+      exclude: ["createdAt", "updatedAt"],	
+    },	
+    include: [	
+      {	
+        model: (await db).models.coordinate,	
+        attributes: ["latitude", "longitude"],	
+        as: "coordinate",	
+      },	
+    ],
+  })
     .then((data) => {
       res.locals.location = data;
       res.render("location/details.ejs", { title: tabTitle, res });
     })
     .catch((err) => {
+      LOG.error(`Error: ${JSON.stringify(err)}`);
       res.status(500).send({
         message: `Error retrieving item with id=${locationId}: ${err.message}`,
       });
@@ -164,12 +242,24 @@ module.exports.showDetails = async (req, res) => {
 // GET /edit/:id
 module.exports.showEdit = async (req, res) => {
   const { locationId } = req.params;
-  (await db).models.Location.findByPk(locationId)
+  (await db).models.location.findByPk(locationId,{
+    attributes: {	
+      exclude: ["createdAt", "updatedAt"],	
+    },	
+    include: [	
+      {	
+        model: (await db).models.coordinate,	
+        exclude: ["createdAt", "updatedAt"],	
+        as: "coordinate",	
+      },	
+    ],
+  })
     .then((data) => {
       res.locals.location = data;
       res.render("location/edit.ejs", { title: tabTitle, res });
     })
     .catch((err) => {
+      LOG.error(`Error: ${JSON.stringify(err)}`);
       res.status(500).send({
         message: `Error retrieving item with id=${locationId}: ${err.message}`,
       });

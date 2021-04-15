@@ -16,11 +16,11 @@ Welcome to 'The Hunt', a full-stack location-based game app.
 
 ## User stories 
 
-- [ ] As a player, I want to touch/click the first color to request a valid (treasure) location.
-- [ ] As a player, I want to hear confirmation that a location has been selected (so I can I can begin searching). 
-- [ ] As a player, I want to touch/click the second color:  If I am outside the treasure location, I want to hear information to help me find the treasure location (clue? how far away? what direction to walk?)
-- [ ] As a player, I want to touch/click the second color: If I am inside the treasure location, I want to hear and see confirmation that I have earned this treasure.
-- [ ] As a player, after confirmation that I have earned a location: I want the game to ask me if I would like to select another location. If I select yes, we reset and begin again. 
+- [X] As a player, I want to touch/click the first color to request a valid (treasure) location.
+- [X] As a player, I want to hear confirmation that a location has been selected (so I can I can begin searching). 
+- [X] As a player, I want to touch/click the second color:  If I am outside the treasure location, I want to hear information to help me find the treasure location (clue? how far away? what direction to walk?)
+- [X] As a player, I want to touch/click the second color: If I am inside the treasure location, I want to hear and see confirmation that I have earned this treasure.
+- [X] As a player, after confirmation that I have earned a location: I want the game to ask me if I would like to select another location. If I select yes, we reset and begin again. 
 
 ## Stack
 - Platform: Node(Version - v15.1.0)
