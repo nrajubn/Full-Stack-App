@@ -36,6 +36,11 @@ module.exports = async (db) => {
           id: 2,
           locationName: "Villago",
         },
+        {
+          id:3,
+          locationName: "Horizons West Apartments",
+        }
+        
       ],
       { validate: true } // add options object to call new model validators
     );
@@ -97,6 +102,30 @@ module.exports = async (db) => {
           locationId: 2,
           latitude: 40.36052111,
           longitude: -94.88821111,
+        },
+        {
+          id: 9,
+          locationId: 3,
+          latitude: 40.35605690,
+          longitude: -94.88260143,
+        },
+        {
+          id: 10,
+          locationId: 3,
+          latitude: 40.35605690,
+          longitude: -94.88155537,
+        },
+        {
+          id: 11,
+          locationId: 3,
+          latitude: 40.35582389,
+          longitude: -94.88260143,
+        },
+        {
+          id: 12,
+          locationId: 3,
+          latitude: 40.35582389,
+          longitude: -94.88155537,
         },
       ],
       { validate: true } // add options object to call new model validators
