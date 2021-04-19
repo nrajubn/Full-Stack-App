@@ -40,3 +40,8 @@ Welcome to 'The Hunt', a full-stack location-based game app.
   <td align="center"><a href="https://github.com/Avisakula123"><img src="https://avatars.githubusercontent.com/u/60164504?s=460&u=9401e8b6d44679177550d9b4b5c574cb9100c975&v=4" width="100px;" alt=""/><br /><sub><b>Rohith Reddy Avisakula</b></sub></a><br /></td>
 </tr>
 </table>
+
+## Reference
+
+- [Web App fall 2020](https://github.com/denisecase/web-app-2020-fall)
+- [Group11-FullStack](https://github.com/KHARIKA17/Group-11-Full-stack-app)
