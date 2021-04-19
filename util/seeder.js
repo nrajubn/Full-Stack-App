@@ -65,18 +65,18 @@ module.exports = async (db) => {
           id: 2,
           locationId: 1,
           latitude: 40.35047656,
-          longitude: -94.88253002,
+          longitude: -94.88315600,
         },
         {
           id: 3,
           locationId: 1,
-          latitude: 40.34964461,
-          longitude: -94.88330786,
+          latitude: 40.35038000,
+          longitude: -94.88315600,
         },
         {
           id: 4,
           locationId: 1,
-          latitude: 40.34964461,
+          latitude: 40.35038000,
           longitude: -94.88253002,
         },
         {
